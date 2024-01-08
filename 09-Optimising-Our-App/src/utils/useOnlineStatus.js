@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react'
+
 export const useOnlineStatus = () => {
-	const [onlineStatus, setOnlineStatus] = useState(second)
+	const [onlineStatus, setOnlineStatus] = useState(true)
 
 	useEffect(() => {
-		document.addEventListener('offline', () => {
+		window.addEventListener('offline', () => {
 			setOnlineStatus(false)
 		})
-		document.addEventListener('online', () => {
+		window.addEventListener('online', () => {
 			setOnlineStatus(true)
 		})
-	}, [onlineStatus])
+	}, [])
 
+	console.log('online hook', onlineStatus)
 	return onlineStatus
 }
