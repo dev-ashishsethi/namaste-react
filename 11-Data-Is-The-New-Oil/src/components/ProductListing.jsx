@@ -3,6 +3,7 @@ import data from '../data.json'
 import { ProductCard } from './ProductCard'
 import ShimmerUI from './ShimmerUI'
 import { useOnlineStatus } from '../utils/useOnlineStatus'
+import { Link } from 'react-router-dom'
 
 export const ProductListing = () => {
 	const [restaurantData, setRestaurantData] = useState([])
@@ -31,15 +32,16 @@ export const ProductListing = () => {
 
 	async function fetchData() {
 		const response = await fetch(
-			'https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4594965&lng=77.0266383&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
+			'https://dummyjson.com/products'
 			)
 			.then((res) => res.json())
-			.catch((e) => console.error('data fetching error', e.target.value))
+			.catch((e) => console.error('data fetching error', e))
+			
 				setRestaurantData(
-					response?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+					response?.products
 					)
 				setFilteredData(
-						response?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+						response?.products
 					)
 			}
 					
@@ -67,7 +69,7 @@ export const ProductListing = () => {
 			</button>
 			<div className='products'>
 				{filterdData?.length > 0 && (
-					filterdData?.map((res) => <ProductCard details={res} />)
+					filterdData?.map((res) => <Link to={'/product/'+res.id}><ProductCard details={res} /></Link>)
 				) }
 			</div>
 		</>
