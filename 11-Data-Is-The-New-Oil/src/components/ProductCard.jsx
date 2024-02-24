@@ -4,12 +4,12 @@ export const ProductCard = ({ details }) => {
 			<img
 				className='product-img'
 				src={
-					details.thumbnail
+					details?.thumbnail
 				}
-				alt={details.title + ' image'}
+				alt={details?.title + ' image'}
 			/>
-			<h4>{details.title}</h4>
-			<p>{details.rating}</p>
+			<h4>{details?.title}</h4>
+			<p>{details?.rating}</p>
 		</div>
 	)
 }

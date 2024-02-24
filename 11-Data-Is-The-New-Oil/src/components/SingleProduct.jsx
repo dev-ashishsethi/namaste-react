@@ -17,11 +17,11 @@ const SingleProduct = () => {
   return (
     <div className='flex flex-wrap'>
       <div>
-        <h1 className='text-2xl font-bold'>{singleProduct.title}</h1>
-        <img src={singleProduct.thumbnail} alt="" />
+        <h1 className='text-2xl font-bold'>{singleProduct?.title}</h1>
+        <img src={singleProduct?.thumbnail} alt="" />
       </div>
       <div>
-        <h1 className='text-2xl font-bold'>{singleProduct.brand + ' ' + singleProduct.title}</h1>
+        <h1 className='text-2xl font-bold'>{singleProduct?.brand + ' ' + singleProduct?.title}</h1>
       </div>
     </div>
   )

@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom"
+import { useUser } from "../context/UserContext"
 
-export const NavBar = () => (
-	<nav className='navbar'>
+export const NavBar = () => {
+	const { userName } = useUser()
+	
+	return <nav className='navbar'>
 		<Link to={'/'}>
 			<img
-			src='https://i.ibb.co/2hvzt4K/attachment-98157495-e1571110518414.png'
-			alt='Logo'
-			className='nav-logo'
-		/>
-			</Link>
+				src='https://i.ibb.co/2hvzt4K/attachment-98157495-e1571110518414.png'
+				alt='Logo'
+				className='nav-logo'
+			/>
+		</Link>
 		<div>
 			<ul className='nav-list'>
 				<Link to={'/'}>Home</Link>
 				<Link to={'/about'}>About Us</Link>
-				<Link to={ '/contact'}>Contact Us</Link >
+				<Link to={'/contact'}>Contact Us</Link >
 			</ul>
 		</div>
 
@@ -33,7 +36,8 @@ export const NavBar = () => (
 						className='nav-icon'
 					/>
 				</li>
+				<span>{ userName}</span>
 			</ul>
 		</div>
 	</nav>
-)
+}
